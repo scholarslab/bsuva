@@ -2,7 +2,7 @@
         <?php if (have_posts()) : ?>
 
         <?php if (is_home() || is_archive()): ?>
-          <h1>Archives</h1>
+          <h1>News</h1>
         
         <?php endif; ?>
         <?php if (is_search()): ?>

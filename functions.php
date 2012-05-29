@@ -143,12 +143,13 @@ function bsuva_studies_in_bib_listing() {
      while (false !== ($issue = readdir($listings))) {
         if ($issue != "." && $issue != ".." && is_dir($epubDir . '/' . $issue)) {
             $issueUrl = WP_CONTENT_URL . '/epubs/'.$issue;
-            $epubUrl = $issueUrl . '/'.$issue.'.epub';
-            $issueVolume = str_replace('Studies in Bibliography,', '', $issue);
+            $epubName = trim(preg_replace('/\(.*\)/', '', $issue));
+            $epubName = str_replace(' ', '_', $epubName);
+            $epubUrl = $issueUrl . '/'.$epubName.'.epub';
             
             $html .= '<li class="issue">'
-                  . '<a href="'.$epubUrl.'/">'
-                  . trim($issueVolume).'</a>'
+                  . '<a href="'.$epubUrl.'">'
+                  . trim($issue).'</a>'
                   . '</li>';
         }
      }

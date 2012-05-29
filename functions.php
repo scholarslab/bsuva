@@ -14,7 +14,7 @@ register_nav_menu( 'journal-blurb', __( 'Journal Blurb Menu', 'bsuva' ) );
 function bsuva_widgets_init() {
     $beforeTitle = '<h2>';
     $afterTitle = '</h2>';
-    
+
     register_sidebar( array(
         'name' => __( 'Primary Home Widget Area', 'bsuva' ),
         'id' => 'primary-home-widget-area',
@@ -133,26 +133,50 @@ function bsuva_register_post_types() {
 
 add_action( 'init', 'bsuva_register_post_types' );
 
-function bsuva_studies_in_bib_listing() {
+/**
+ * Reads the epubs directory and generates links to individual epubs
+ *
+ * @return string HTML string of links
+ */
+function bsuva_studies_in_bib_listing()
+{
     $html = '';
 
     $epubDir = WP_CONTENT_DIR . '/epubs';
 
     $listings = opendir($epubDir);
+    $listing_array = array();
+    while($listing_array[] = readdir($listings));
 
-     while (false !== ($issue = readdir($listings))) {
-        if ($issue != "." && $issue != ".." && is_dir($epubDir . '/' . $issue)) {
-            $issueUrl = WP_CONTENT_URL . '/epubs/'.$issue;
-            $epubName = trim(preg_replace('/\(.*\)/', '', $issue));
-            $epubName = str_replace(' ', '_', $epubName);
-            $epubUrl = $issueUrl . '/'.$epubName.'.epub';
-            
-            $html .= '<li class="issue">'
+    sort($listing_array);
+    closedir($listings);
+
+    foreach ($listing_array as $issue) {
+        $issueUrl = WP_CONTENT_URL . '/epubs/' . $issue;
+        $epubName = trim(preg_replace('/\(.*\)/', '', $issue));
+        $epubName = str_replace(' ', '_', $epubName);
+        $epubUrl = $issueUrl . '/'.$epubName.'.epub';
+
+         $html .= '<li class="issue">'
                   . '<a href="'.$epubUrl.'">'
                   . trim($issue).'</a>'
                   . '</li>';
-        }
-     }
+    }
+
+
+     //while (false !== ($issue = readdir($listings))) {
+        //if ($issue != "." && $issue != ".." && is_dir($epubDir . '/' . $issue)) {
+            //$issueUrl = WP_CONTENT_URL . '/epubs/'.$issue;
+            //$epubName = trim(preg_replace('/\(.*\)/', '', $issue));
+            //$epubName = str_replace(' ', '_', $epubName);
+            //$epubUrl = $issueUrl . '/'.$epubName.'.epub';
+
+            //$html .= '<li class="issue">'
+                  //. '<a href="'.$epubUrl.'">'
+                  //. trim($issue).'</a>'
+                  //. '</li>';
+        //}
+     //}
 
     return $html;
 }

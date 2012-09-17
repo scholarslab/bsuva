@@ -142,41 +142,24 @@ function bsuva_studies_in_bib_listing()
 {
     $html = '';
 
-    $epubDir = WP_CONTENT_DIR . '/epubs';
+    $issues = glob_recursive(WP_CONTENT_DIR . '/epubs/*.epub');
 
-    $listings = opendir($epubDir);
-    $listing_array = array();
-    while($listing_array[] = readdir($listings));
+    foreach ($issues as $issue) {
+        // Get the directory name for the issue.
+        $issueDir = basename(dirname($issue));
+        $volumeInfo = explode(' ',$issueDir);
 
-    sort($listing_array);
-    closedir($listings);
-
-    foreach ($listing_array as $issue) {
-        $issueUrl = WP_CONTENT_URL . '/epubs/' . $issue;
-        $epubName = trim(preg_replace('/\(.*\)/', '', $issue));
-        $epubName = str_replace(' ', '_', $epubName);
-        $epubUrl = $issueUrl . '/'.$epubName.'.epub';
-
-         $html .= '<li class="issue">'
-                  . '<a href="'.$epubUrl.'">'
-                  . trim($issue).'</a>'
-                  . '</li>';
+        // Build the issue URL
+        $issueUrl = WP_CONTENT_URL . '/epubs/'. $issueDir . '/' . basename($issue);
+        $coverUrl = 'http://etext.virginia.edu/bsuva/sb/images/public/sb'.$volumeInfo[1].'fcov.gif';
+        $html .= '<li class="issue">'
+               . '<a href="'.$issueUrl.'">'
+               . '<img src="'.$coverUrl.'">'
+               . '<span class="volume">'.$volumeInfo[0] . ' ' . $volumeInfo[1].'</span>'
+               . ' <em>'.preg_replace('/[^0-9\-]/', '', $volumeInfo[2]).'</em>'
+               . '</a>'
+               . '</li>';
     }
-
-
-     //while (false !== ($issue = readdir($listings))) {
-        //if ($issue != "." && $issue != ".." && is_dir($epubDir . '/' . $issue)) {
-            //$issueUrl = WP_CONTENT_URL . '/epubs/'.$issue;
-            //$epubName = trim(preg_replace('/\(.*\)/', '', $issue));
-            //$epubName = str_replace(' ', '_', $epubName);
-            //$epubUrl = $issueUrl . '/'.$epubName.'.epub';
-
-            //$html .= '<li class="issue">'
-                  //. '<a href="'.$epubUrl.'">'
-                  //. trim($issue).'</a>'
-                  //. '</li>';
-        //}
-     //}
 
     return $html;
 }
@@ -199,4 +182,15 @@ function get_post_top_ancestor_id(){
     
     return $post->ID;
 }
+}
+
+function glob_recursive($pattern, $flags = 0)
+{
+    $files = glob($pattern, $flags);
+
+    foreach (glob(dirname($pattern) . '/*', GLOB_ONLYDIR|GLOB_NOSORT) as $dir) {
+        $files = array_merge($files, glob_recursive($dir.'/'.basename($pattern), $flags));
+    }
+
+    return $files;
 }

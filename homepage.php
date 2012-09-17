@@ -24,12 +24,10 @@ get_header(); ?>
         Our Journal
         </div>
         <h2><a href="<?php echo get_permalink($sibPage->ID); ?>">Studies in Bibliography</a></h2>
-        <p><?php echo get_the_excerpt($sibPage->ID); ?></p>
-        <?php wp_nav_menu( array( 'fallback_cb' => false, 'container_class' => 'menu-sib', 'theme_location' => 'journal-blurb') ); ?>
+        <?php dynamic_sidebar( 'secondary-home-widget-area' ); ?>
         
     </div>
     <?php endif; ?>
-    <?php dynamic_sidebar( 'secondary-home-widget-area' ); ?>
 </div>
 
 <?php get_footer(); ?>

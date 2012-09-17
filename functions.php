@@ -8,7 +8,6 @@ add_theme_support( 'automatic-feed-links' );
 
 // Register menus.
 register_nav_menu( 'header', __( 'Header Menu', 'bsuva' ) );
-register_nav_menu( 'journal-blurb', __( 'Journal Blurb Menu', 'bsuva' ) );
 
 // Register widgets.
 function bsuva_widgets_init() {

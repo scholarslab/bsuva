@@ -339,13 +339,7 @@
         background: rgba(15,35,65,0.75);
     }
 
-    #journal-blurb {
-        border:1px solid rgba(0,0,0,0.1);
-        border-width: 1px 0;
-        padding: 1em 0;
-    }
-
-    #journal-blurb h2 {
+    h2#journal-blurb {
         margin:0;
         line-height: 1.2;
         font-size: 1.8em;

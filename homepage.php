@@ -19,14 +19,11 @@ get_header(); ?>
 <div id="home-secondary">
 
     <?php if ($sibPage = get_page_by_title('Studies in Bibliography')): ?>
-    <div id="journal-blurb">
         <div class="kicker">
         Our Journal
         </div>
-        <h2><a href="<?php echo get_permalink($sibPage->ID); ?>">Studies in Bibliography</a></h2>
+        <h2 id="journal-blurb"><a href="<?php echo get_permalink($sibPage->ID); ?>">Studies in Bibliography</a></h2>
         <?php dynamic_sidebar( 'secondary-home-widget-area' ); ?>
-        
-    </div>
     <?php endif; ?>
 </div>
 

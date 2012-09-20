@@ -426,6 +426,10 @@
       border-bottom: 1px solid #ddd;
     }
 
+    #menu-home-secondary-menu {
+      border-top: 1px solid #ddd;
+    }
+
     footer[role="contentinfo"] {
         background-color: #3B4B60;
         background-color: rgba(15,35,65,0.8);

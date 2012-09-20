@@ -106,8 +106,18 @@
     h4 + * {
       margin-top:0;
     }
-    a:link {color: rgb(220,120,0);}
-    a:visited {color: rgba(220,120,0,0.7);}
+    a:link {
+      color: rgb(220,120,0);
+    }
+    a:visited {
+      color: rgb(220,120,0);
+    }
+    a:hover {
+      color: #3B4B60;
+    }
+    a:active {
+      color: rgb(220,120,0);
+    }
 
     h1 a,
     h2 a {
@@ -122,6 +132,7 @@
     .kicker {
         font-size: 0.8em;
         font-weight:bold;
+        color: #ccc;
         color: rgba(0,0,0,0.5);
     }
     
@@ -145,8 +156,9 @@
         display:inline;
     }
 
-    .menu li:not(:first-child):before {
+    .menu li+li:before {
         content: " / ";
+        color: #ccc;
         color: rgba(0,0,0,0.5);
         padding: 0 4px;
     }
@@ -168,7 +180,7 @@
 
     header[role="banner"] div.menu ul,
     header[role="banner"] .menu {
-        margin:0;
+        margin:0 0 1em;
         padding:0;
         font-weight:bold;
         font-size: 0.9em;
@@ -178,31 +190,36 @@
     header[role="banner"] .menu li {
         display:inline;
     }
-    
-    header[role="banner"] nav li:not(:first-child):before,
-    header[role="banner"] .menu li:not(:first-child):before {
+
+    header[role="banner"] nav li + li:before,
+    header[role="banner"] .menu li + li:before {
         content: " / ";
-        color: rgba(255,255,255,0.5);
+        color: #aaa;
         padding: 0 4px;
     }
 
     header[role="banner"] a {
+        color: rgb(240,240,240);
+        color: rgba(255,255,255,0.7);
         text-decoration:none;
     }
 
     header[role="banner"] a:link,
     header[role="banner"] a:visited {
-        color: rgba(255,255,255,0.7);
+        color: rgb(240,240,240);
     }
 
     header[role="banner"] a:hover,
     header[role="banner"] a:active {
-        color: rgba(255,255,255,1);
+        color: #fff;
     }
+
 #search {
   position:relative;
-  margin: 2em 0 0;
   font-size: 80%;
+  width: 180px;
+  overflow:hidden;
+  zoom:1;
 }
 
 #search * {
@@ -216,33 +233,46 @@
 
 #search input[type=search] {
   border:none;
-  padding: 0 0.25em 0 0.25em;
   margin:0;
-  border-radius: 4px 0 0 4px;
-  height: 2em;
-  margin-right:0;
+  height: 1em;
   float:left;
+  width: 140px;
+  padding: 10px 40px 10px 10px;
+  text-align: left;
+  border: none;
+  border: 1px solid #ccc;
+  box-shadow: none;
+  background: #fafafa;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+#search input[type=search]:focus {
+  background: #fff;
+  outline:none;
 }
 
 #search input[type=submit] {
-  display:inline;
-  float:left;
-  margin:0;
-  text-indent: -9999px; /* Hide the button text. */
-  background-size: 60% 60%;
-  background: rgba(0,0,0,0.8) url("images/magnifying-glass.png") 50% 50% no-repeat;
-  width: 2em;
-  height: 2em;
-  line-height:0;
-  border: none !important;
-  border-radius: 0 4px 4px 0;
-  background-color: rgba(0,0,0,0.35) !important;
+    width: 25px;
+    height: 16px;
+    background: url("images/search-icon.png") 50% 0 no-repeat;
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -8px;
+    text-indent: 9999px;
+    border: none;
+    float:left;
+    opacity: 0.5;
+    padding-left: 10px;
 }
 
 #search input[type=submit]:hover,
 #search input[type=submit]:active {
-  background-color: rgba(0,0,0,0.2) !important;
+  opacity: 1;
 }
+
     #masthead {
       height: 100px;
       overflow:hidden;
@@ -250,6 +280,7 @@
     }
     #content {
         padding:2em;
+        background-color: #fff;
         background-color: rgba(255,255,255,0.8);
         overflow:hidden;
     }
@@ -270,12 +301,13 @@
         font-weight:bold;
         padding: 1em 0.5em;
     }
-    .home .widget_recent_entries li:not(:first-child) {
-        border-top:1px dotted rgba(0,0,0,0.25);
+    .home .widget_recent_entries li + li {
+        border-top:1px dotted #ddd;
     }
     #home-intro p {
         font-size: 1.5em;
         margin: 1em 0;
+        color: #ccc;
         color: rgba(0,0,0,0.5);
     }
 
@@ -290,13 +322,15 @@
         background: rgba(30,70, 130, 0.75);
         font-size: 1em;
         padding:0.5em;
+        color: #fafafa;
         color: rgba(255,255,255,0.9);
     }
 
     #home-primary .menu a:link,
     #home-primary .menu a:visited {
         background: rgba(15,35,65,0.65);
-        color: rgba(255,255,255,0.9);        
+        color: #fafafa;
+        color: rgba(255,255,255,0.9);
     }
 
     #home-primary .menu a:hover,
@@ -324,7 +358,7 @@
 
     .single article header,
     .page article header {
-      border: 1px solid rgba(0,0,0,0.1);
+      border: 1px solid #eee;
       border-width: 0 0 1px;
       padding: 0 0 1em;
       margin-bottom: 3em;
@@ -337,6 +371,7 @@
     
     .byline {
       font-size: 90%;
+      color: #999;
       color: rgba(0,0,0,0.5);
       margin: 0 0 1em;
       font-weight:bold;
@@ -397,8 +432,10 @@
     }
 
     footer[role="contentinfo"] {
-        background: rgba(15,35,65,0.8);
+        background-color: #3B4B60;
+        background-color: rgba(15,35,65,0.8);
         padding: 2em;
+        color: #fafafa;
         color: rgba(255,255,255,0.8);
     }
 
@@ -418,25 +455,26 @@
         display:inline;
     }
     
-    footer[role="contentinfo"] nav li:not(:first-child):before,
-    footer[role="contentinfo"] .menu li:not(:first-child):before {
+    footer[role="contentinfo"] nav li + li:before,
+    footer[role="contentinfo"] .menu li + li:before {
         content: " / ";
+        color: #eee;
         color: rgba(0,0,0,0.25);
         padding: 0 4px;
     }
 
     footer[role="contentinfo"] a {
         text-decoration:none;
-        color: rg
+        color: #eee;
     }
     footer[role="contentinfo"] a:link,
     footer[role="contentinfo"] a:visited {
-        color: rgba(255,255,255,0.7);
+        color: #eee;;
     }
 
     footer[role="contentinfo"] a:hover,
     footer[role="contentinfo"] a:active {
-        color: rgba(255,255,255,1);
+        color: #fff;
     }
 
 }
@@ -585,7 +623,7 @@
     }
 
     .page-nav li {
-      border-bottom: 1px solid rgba(0,0,0,0.1);
+      border-bottom: 1px solid #eee;
     }
 
     .page-nav li li {

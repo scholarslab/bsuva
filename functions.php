@@ -69,23 +69,6 @@ function bsuva_widgets_init() {
 add_action( 'widgets_init', 'bsuva_widgets_init' );
 
 /**
- * HTML5 Shiv Markup 
- *
- * Adds markup for the HTM5 shiv, which helps versions of IE 8 and
- * order recognize and style HTML5 elements. By Remy Sharp.
- *
- */
-function bsuva_add_html5shiv_markup() {
-?>
-<!--[if lt IE 9]>
-<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<?php
-}
-
-add_action('wp_head', 'bsuva_add_html5shiv_markup');
-
-/**
  * Customizable syntax for the site title.
  *
  **/

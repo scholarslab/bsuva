@@ -134,8 +134,9 @@ function bsuva_studies_in_bib_listing()
         $volumeInfo = explode(' ',$issueDir);
 
         // Build the issue URL
-        $issueUrl = WP_CONTENT_URL . '/epubs/'. $issueDir . '/' . basename($issue);
-        $coverUrl = 'http://etext.virginia.edu/bsuva/sb/images/public/sb'.$volumeInfo[1].'fcov.gif';
+        $issueBaseUrl = WP_CONTENT_URL . '/epubs/'. $issueDir;
+        $issueUrl = $issueBaseUrl . '/' . basename($issue);
+        $coverUrl = $issueBaseUrl . '/sb'.$volumeInfo[1].'fcov.gif';
         $html .= '<li class="issue">'
                . '<a href="'.$issueUrl.'">'
                . '<img src="'.$coverUrl.'">'
@@ -178,3 +179,4 @@ function glob_recursive($pattern, $flags = 0)
 
     return $files;
 }
+

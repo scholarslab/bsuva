@@ -126,6 +126,8 @@ function bsuva_studies_in_bib_listing()
 
     $issues = glob_recursive(WP_CONTENT_DIR . '/epubs/*.epub');
 
+    sort($issues);
+
     foreach ($issues as $issue) {
         // Get the directory name for the issue.
         $issueDir = basename(dirname($issue));

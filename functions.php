@@ -135,14 +135,17 @@ function bsuva_studies_in_bib_listing()
 
         // Build the issue URL
         $issueBaseUrl = WP_CONTENT_URL . '/epubs/'. $issueDir;
-        $issueUrl = $issueBaseUrl . '/' . basename($issue);
+        $epubUrl = $issueBaseUrl . '/' . basename($issue);
+        $htmlUrl = 'http://etext.lib.virginia.edu/bsuva/sb/toc/sib'.$volumeInfo[1].'toc.htm';
         $coverUrl = $issueBaseUrl . '/sb'.$volumeInfo[1].'fcov.gif';
         $html .= '<li class="issue">'
-               . '<a href="'.$issueUrl.'">'
+               . '<a href="'.$epubUrl.'">'
                . '<img src="'.$coverUrl.'">'
-               . '<span class="volume">'.$volumeInfo[0] . ' ' . $volumeInfo[1].'</span>'
-               . ' <em>'.preg_replace('/[^0-9\-]/', '', $volumeInfo[2]).'</em>'
                . '</a>'
+               . '<strong class="volume">'.$volumeInfo[0] . ' ' . $volumeInfo[1].'</strong>'
+               . ' <em>'.preg_replace('/[^0-9\-]/', '', $volumeInfo[2]).'</em>'
+               . '<a class="format epub" href="'.$epubUrl.'">Epub</a> · '
+               . '<a class="format html" href="'.$htmlUrl.'">HTML</a>'
                . '</li>';
     }
 

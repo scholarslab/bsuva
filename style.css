@@ -390,8 +390,12 @@
     }
 
     #studies-in-bibliography a {
-        font-weight:bold;
         text-decoration:none;
+    }
+
+    #studies-in-bibliography .format {
+      font-size: 87.5%;
+      font-weight:bold;
     }
 
     #studies-in-bibliography img {
@@ -402,7 +406,9 @@
       font-style:normal;
       color: #555;
       font-size: 87.5%;
+      margin-bottom: 1em;
     }
+
      #menu-home-secondary-menu {
         font-family: Garamond, "Adobe Garamond Pro", Georgia, Times, "Times New Roman", serif;
       font-size: 1.75em;

@@ -505,14 +505,14 @@
     }
 
     footer[role="contentinfo"] #primary-footer-widget-area {
-        float:left;
-        width: 48%;
+        float:right;
+        width: 70%;
+        text-align:right;
     }
 
     footer[role="contentinfo"] #secondary-footer-widget-area {
-        float:right;
-        width: 48%;
-        text-align:right;
+        float:left;
+        width: 25%;
     }
 }
 

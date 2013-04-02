@@ -144,8 +144,8 @@ function bsuva_studies_in_bib_listing()
                . '</a>'
                . '<strong class="volume">'.$volumeInfo[0] . ' ' . $volumeInfo[1].'</strong>'
                . ' <em>'.preg_replace('/[^0-9\-]/', '', $volumeInfo[2]).'</em>'
-               . '<a class="format epub" href="'.$epubUrl.'">Epub</a> · '
-               . '<a class="format html" href="'.$htmlUrl.'">HTML</a>'
+               . '<a class="format html" href="'.$htmlUrl.'">HTML</a> · '
+               . '<a class="format epub" href="'.$epubUrl.'">EPUB</a>'
                . '</li>';
     }
 

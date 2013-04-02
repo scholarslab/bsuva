@@ -528,7 +528,7 @@
     body {
         min-width: 748px;
         width: 80%;
-        max-width: 920px;
+        max-width: 960px;
         margin: 60px auto;
         box-shadow:0 0 20px rgba(0,0,0,0.1);
     }

@@ -30,7 +30,7 @@
         <?php wp_nav_menu( array( 'container_class' => 'menu-header', 'theme_location' => 'header', 'depth' => 1 ) ); ?>
         <form role="search" method="get" id="search" action="<?php echo home_url( '/' ); ?>">
             <label class="screen-reader-text" for="s">Search for:</label>
-            <input type="search" value="" placeholder="Search BSUVA" name="s" id="s" />
+            <input type="search" value="" placeholder="Search BSUVA.org" name="s" id="s" />
             <input type="submit" id="searchsubmit" value="Search" />
         </form>
     </header>

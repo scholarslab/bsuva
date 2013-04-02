@@ -486,20 +486,6 @@
 
 @media only screen and (min-width: 480px) {
 
-    header[role="banner"] h1 {
-        float:left;
-        margin-bottom:0;
-    }
-    header[role="banner"] div.menu ul,
-    header[role="banner"] .menu {
-        float:right;
-        text-align:right;
-    }
-    #search {
-      float:right;
-      text-align:right;
-      clear:right;
-    }
     footer[role="contentinfo"] {
         overflow:hidden;
     }
@@ -527,7 +513,7 @@
 
     body {
         min-width: 748px;
-        width: 80%;
+        width: 90%;
         max-width: 960px;
         margin: 60px auto;
         box-shadow:0 0 20px rgba(0,0,0,0.1);
@@ -660,6 +646,25 @@
     #studies-in-bibliography em {
       display:block;
       margin-left: 50px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    header[role="banner"] h1 {
+        float:left;
+        margin-bottom:0;
+    }
+
+    header[role="banner"] div.menu ul,
+    header[role="banner"] .menu {
+        float:right;
+        text-align:right;
+    }
+
+    #search {
+      float:right;
+      text-align:right;
+      clear:right;
     }
 }
 

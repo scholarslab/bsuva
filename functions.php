@@ -136,7 +136,11 @@ function bsuva_studies_in_bib_listing()
         // Build the issue URL
         $issueBaseUrl = WP_CONTENT_URL . '/epubs/'. $issueDir;
         $epubUrl = $issueBaseUrl . '/' . basename($issue);
-        $htmlUrl = 'http://etext.lib.virginia.edu/bsuva/sb/toc/sib'.$volumeInfo[1].'toc.htm';
+        //$htmlUrl = 'http://etext.lib.virginia.edu/bsuva/sb/toc/sib'.$volumeInfo[1].'toc.htm';
+        // parse the numeric number from the volumeInfo
+        $volume = filter_var($volumeInfo[1], FILTER_SANITIZE_NUMBER_INT);
+
+        $htmlUrl = 'http://xtf.lib.virginia.edu/xtf/view?docId=StudiesInBiblio/uvaBook/tei/sibv' . sprintf('%1$03d', $volume) . '.xml';
         $coverUrl = $issueBaseUrl . '/sb'.$volumeInfo[1].'fcov.gif';
         $html .= '<li class="issue">'
                . '<a href="'.$epubUrl.'">'

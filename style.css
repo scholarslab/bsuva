@@ -643,6 +643,8 @@
       width: 50px;
       display:block;
       margin-right: 10px;
+      height: 75px;
+      overflow:hidden;
     }
 
     #studies-in-bibliography span,

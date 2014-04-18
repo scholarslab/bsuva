@@ -124,33 +124,56 @@ function bsuva_studies_in_bib_listing()
 {
     $html = '';
 
-    $issues = glob_recursive(WP_CONTENT_DIR . '/epubs/*.epub');
+    // Recursive search through directories to find volumes with a gif.
+    $issues = glob_recursive(WP_CONTENT_DIR . '/epubs/*.gif');
 
     sort($issues);
 
     foreach ($issues as $issue) {
-        // Get the directory name for the issue.
+        // Get the Issue information from the directory name.
         $issueDir = basename(dirname($issue));
         $volumeInfo = explode(' ',$issueDir);
 
         // Build the issue URL
         $issueBaseUrl = WP_CONTENT_URL . '/epubs/'. $issueDir;
-        $epubUrl = $issueBaseUrl . '/' . basename($issue);
-        //$htmlUrl = 'http://etext.lib.virginia.edu/bsuva/sb/toc/sib'.$volumeInfo[1].'toc.htm';
+
+        // Set epubUrl to null to begin with.
+        $epubUrl = null;
+
+        // Go look for epubs in this directory.
+        $epub = glob( WP_CONTENT_DIR . '/epubs/' . $issueDir . '/*.epub' );
+
+        // If we find a epub file in the issue directory, reset $epubUrl.
+        if (!empty($epub)) {
+            $epubFile = $epub[0]; // Only use the first result. There shouldn't be multiple epubs.
+            $epubUrl = $issueBaseUrl . '/' . basename($epubFile);
+        }
+
+        // TEI address on xtf.lib.virginia.edu.
         // parse the numeric number from the volumeInfo
         $volume = filter_var($volumeInfo[1], FILTER_SANITIZE_NUMBER_INT);
-
         $htmlUrl = 'http://xtf.lib.virginia.edu/xtf/view?docId=StudiesInBiblio/uvaBook/tei/sibv' . sprintf('%1$03d', $volume) . '.xml';
-        $coverUrl = $issueBaseUrl . '/sb'.$volumeInfo[1].'fcov.gif';
+
+        // Cover URL.
+        $coverUrl = $issueBaseUrl . '/' . basename($issue);
+
+        // Add it all up and spit out in HTML.
         $html .= '<li class="issue">'
-               . '<a href="'.$epubUrl.'">'
+               . '<a href="'.$htmlUrl.'" class="coverlink">'
                . '<img src="'.$coverUrl.'">'
                . '</a>'
                . '<strong class="volume">'.$volumeInfo[0] . ' ' . $volumeInfo[1].'</strong>'
                . ' <em>'.preg_replace('/[^0-9\-]/', '', $volumeInfo[2]).'</em>'
-               . '<a class="format html" href="'.$htmlUrl.'">HTML</a> · '
-               . '<a class="format epub" href="'.$epubUrl.'">EPUB</a>'
-               . '</li>';
+               . '<a class="format html" href="'.$htmlUrl.'">HTML</a>';
+
+        if ($epubUrl) {
+
+            $html .= ' · <a class="format epub" href="'.$epubUrl.'">EPUB</a>';
+
+        }
+
+        $html .= '</li>';
+
     }
 
     return $html;

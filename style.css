@@ -638,14 +638,16 @@
       margin-right: 0;
     }
     
-    #studies-in-bibliography img {
+    #studies-in-bibliography .coverlink {
       float:left;
+      width: 50px;
+      display:block;
+      margin-right: 10px;
     }
 
     #studies-in-bibliography span,
     #studies-in-bibliography em {
       display:block;
-      margin-left: 50px;
     }
 }
 
